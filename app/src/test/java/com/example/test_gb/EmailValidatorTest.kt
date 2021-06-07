@@ -39,4 +39,36 @@ class EmailValidatorTest {
     fun emailValidator_NullEmail_ReturnsFalse() {
         assertFalse(EmailValidator.isValidEmail(null))
     }
+
+    //практическое
+    @Test
+    fun emailValidator_Reverse_ReturnFalse(){
+        assertFalse(EmailValidator.isValidEmail("com.list@name"))
+    }
+
+    @Test
+    fun emailValidator_ReverseEmail_ReturnFalse(){
+        assertFalse(EmailValidator.isValidEmail("list@name.com"))
+    }
+
+    @Test
+    fun emailValidator_ALotOfDomain_ReturnFalse(){
+        assertFalse(EmailValidator.isValidEmail("name@list.comcomcomcomcomcomcomcomcomcom"))
+    }
+
+    @Test
+    fun emailValidator_MaxNameSize_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail(
+            "gjklkfwjebsd,.f,srgnepyr[skdb,dgjkrgxdf" +
+                    "vildufyskhfkhcvkhvhidfidfyoidfvhxkhzvhvdxkhzvhvdha" +
+                    "kla;fejgbwnebvjbdffnmslkdfhwjrbtsnm,dfsldkfhrdkjtb" +
+                    "jfgjbfeklz;kebjjbgifjnfsldkfhubksldfjlejbtpzfkgjrb" +
+                    "ttttrname@list.com"))
+    }
+
+    @Test
+    fun emailValidator_InvalidCharStart_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail("*#name@list.com"))
+    }
+
 }
